@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("raj80dockerid/test")
+       app = docker.build("sharks/test_argo")
     }
 
     stage('Test image') {
@@ -20,7 +20,7 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('http://registry.hub.docker.com', 'dockerhub') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
